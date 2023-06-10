@@ -31,7 +31,7 @@ export default function CurdApp() {
         const page = userPage && `?page=${userPage-1}`;
 	    const limit = rowPerPage && `&limit=${rowPerPage}`;
         const search=searchString&& `&search=${searchString}`
-        const result = await axios.post(`https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee${page}${limit}${search}`)
+        const result = await axios.get(`https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee${page}${limit}${search}`)
         setuserList(result.data.msg)
         settotalRecords((result.data.total))
     }
@@ -65,7 +65,7 @@ export default function CurdApp() {
           })
           .then(async(willDelete) => {
             if (willDelete) {
-                const result = await axios.get('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/delete', { employeeID: id })
+                const result = await axios.post('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/delete', { employeeID: id })
                 if(result.data.code==200){
                     getData(activePage,search)
                 }
