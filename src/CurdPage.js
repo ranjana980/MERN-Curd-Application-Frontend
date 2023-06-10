@@ -27,9 +27,9 @@ export default function CurdApp() {
        getData(pageNumber,search)
       };
 
-    const getData = async (userPage,searchString,limit) => {
+    const getData = async (userPage,searchString,rowPerPage) => {
         const page = userPage && `?page=${userPage-1}`;
-	    const limit = limit && `&limit=${limit}`;
+	    const limit = rowPerPage && `&limit=${rowPerPage}`;
         const search=searchString&& `&search=${searchString}`
         const result = await axios.post(`https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee${page}${limit}${search}`)
         setuserList(result.data.msg)
