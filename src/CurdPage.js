@@ -14,11 +14,12 @@ export default function CurdApp() {
     const [open1, setOpen1] = useState(false)
     const [userDetails, setUserDetails] = useState({})
     const [activePage,setactivePage]=useState(1)
+    const [limit,setLimit]=useState(0)
     const [totalRecords,settotalRecords]=useState(0)
     const [search,setSearch]=useState("")
 
     useEffect(() => {
-        getData(activePage,search)
+        getData(activePage,"",search)
     }, [])
 
     const NextPage = (pageNumber) => {
@@ -26,9 +27,11 @@ export default function CurdApp() {
        getData(pageNumber,search)
       };
 
-    const getData = async (userpage,searchString) => {
-        var page=userpage-1
-        const result = await axios.post('http://localhost:4000/api/employee/',{pageNumber:page,search:searchString})
+    const getData = async (userPage,searchString,limit) => {
+        const page = userPage && `?page=${userPage-1}`;
+	    const limit = limit && `&limit=${limit}`;
+        const search=searchString&& `&search=${searchString}`
+        const result = await axios.post(`https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee${page}${limit}${search}`)
         setuserList(result.data.msg)
         settotalRecords((result.data.total))
     }
@@ -38,7 +41,7 @@ export default function CurdApp() {
     }
 
     const handleEdit = async (item) => {
-        const result = await axios.post('http://localhost:4000/api/employee/show', { employeeID: item._id })
+        const result = await axios.post('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/show', { employeeID: item._id })
         if (result.data.code == 201) {
             swal(result.data.msg)
         }
@@ -62,7 +65,7 @@ export default function CurdApp() {
           })
           .then(async(willDelete) => {
             if (willDelete) {
-                const result = await axios.post('http://localhost:4000/api/employee/delete', { employeeID: id })
+                const result = await axios.post('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/delete', { employeeID: id })
                 if(result.data.code==200){
                     getData(activePage,search)
                 }
@@ -106,7 +109,7 @@ export default function CurdApp() {
         values['phone'] = Number(values.phone)
         values['age'] = Number(values.age)
         if (open == true) {
-            const result = await axios.post('http://localhost:4000/api/employee/store', values)
+            const result = await axios.post('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/store', values)
             if(result.data.code==200){
                 swal(result.data.msg, {
                     icon: "success",
@@ -121,7 +124,7 @@ export default function CurdApp() {
         }
         else {
             values['employeeID'] = userDetails._id
-            const result = await axios.post('http://localhost:4000/api/employee/update', values)
+            const result = await axios.post('https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee/update', values)
             if(result.data.code==200){
                 swal(result.data.msg, {
                     icon: "success",
@@ -152,7 +155,6 @@ export default function CurdApp() {
                     <th>Age</th>
                     <th>Action</th>
                 </tr>
-                {console.log}
                 {userList.map((item, index) => (
                     <tr> <td>{((activePage - 1) * 10) + index +  1}</td>
                         <td>{item.name}</td>
