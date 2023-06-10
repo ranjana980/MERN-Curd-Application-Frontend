@@ -20,7 +20,7 @@ export default function CurdApp() {
     
 
 	const handleChangePage = (event, newPage) => {
-		setPage(newPage);
+		setPage(page+1);
 	};
 	const handleChangeRowsPerPage = (event) => {
 		setRowsPerPage(event.target.value);
