@@ -17,6 +17,7 @@ export default function CurdApp() {
     const [page, setPage] = useState(1);
 	const [totalCount, setTotalCount] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [searchValue,setSearchValue]=useState("")
     
 
 	const handleChangePage = (event, newPage) => {
@@ -29,8 +30,8 @@ export default function CurdApp() {
     const [search,setSearch]=useState("")
 
     useEffect(() => {
-        getData(page,rowsPerPage,"")
-    }, [page,rowsPerPage])
+        getData(page,rowsPerPage,searchValue)
+    }, [page,rowsPerPage,searchValue])
 
      const handleSubmit = async (values) => {
         values['phone'] = Number(values.phone)
@@ -88,7 +89,8 @@ export default function CurdApp() {
     }
 
     const handleSearch=()=>{
-        getData(page,rowsPerPage,search)
+        setPage(1)
+        setSearchValue(search)
     }
 
     const handleEdit = async (id) => {
