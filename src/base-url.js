@@ -1,0 +1,1 @@
+export const baseUrl='https://mern-curd-application-backend-1p66r09yp-ranjana980.vercel.app/api/employee'

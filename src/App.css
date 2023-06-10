@@ -9,6 +9,9 @@
 .table{
   width: 100%;
 }
+.form-div{
+  padding: 40px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -29,19 +32,8 @@
   border: 1px solid red;
   width: 90%;
 }
-.text-right{
-  display: flex;
-}
-.text-right ul{
-  
-    display: flex;
-    /* width: 24%; */
-    min-width: 13%;
-    max-width: 100%;
-    justify-content: space-between;
-    text-decoration: none !important;
-   
-}
+
+
 .text-right li{
   list-style: none;
 }
