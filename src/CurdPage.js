@@ -37,7 +37,7 @@ function CurdApp() {
      const handleSubmit = async (values) => {
         values['phone'] = Number(values.phone)
         values['age'] = Number(values.age)
-        if (open ===true) {
+        if (!formValues._id) {
             const result = await axios.post(`${baseUrl}${addUser}`, values)
             if(result.data.code===200){
                 swal(result.data.msg, {
@@ -53,12 +53,12 @@ function CurdApp() {
         }
         else {
             const  employeeID= formValues._id && `/${formValues._id}`;
-            const result = await axios.post(`${baseUrl}${updateDetails}${employeeID}`, values)
+            const result = await axios.patch(`${baseUrl}${updateDetails}${employeeID}`, values)
             if(result.data.code===200){
                 swal(result.data.msg, {
                     icon: "success",
                   });
-              getData(page,rowsPerPage,"")
+                getData(page,rowsPerPage,"")
                 setFormValues(initialVal)
                 setOpen(false)
             }
