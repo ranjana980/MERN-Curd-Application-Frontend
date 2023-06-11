@@ -1,6 +1,4 @@
 import * as yup from 'yup'
-import { baseUrl } from './base-url';
-import { updateDetails,addUser } from './network';
 export  const initialVal = {
     name: "",
     designation: "",
@@ -16,6 +14,7 @@ export  const valSchema = yup.object().shape({
     phone: yup.string().required('Mobile is Required').matches(/^[0-9]+$/, 'Mobile should be a number').min(10, 'Please enter valid Mobile').max(10, 'Enter valid Mobile'),
     email: yup.string().required('Email is Required').matches(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-z\-0-9]+\.)+[a-z]{2,}))$/, 'Invalid Email'),
 });
+
 export const handleEnter = (event) => {
     if (event.key.toLowerCase() === "enter") {
         const form = event.target.form;

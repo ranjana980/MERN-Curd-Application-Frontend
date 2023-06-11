@@ -1,13 +1,14 @@
-import logo from './logo.svg';
+
+import { memo } from 'react';
 import './App.css';
 import CurdApp from './CurdPage';
 
 function App() {
   return (
     <div className="App">
-     <CurdApp/>
+     <CurdApp />
     </div>
   );
 }
 
-export default App;
+export default memo(App);
