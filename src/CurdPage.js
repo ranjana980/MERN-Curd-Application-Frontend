@@ -96,7 +96,7 @@ function CurdApp() {
 
     const handleEdit = async (id) => {
         const  employeeID= id && `/${id}`;
-        const result = await axios.post(`${baseUrl}${viewDetails}${employeeID}`)
+        const result = await axios.get(`${baseUrl}${viewDetails}${employeeID}`)
         if (result.data.code == 201) {
             swal(result.data.msg)
         }
@@ -117,7 +117,7 @@ function CurdApp() {
           .then(async(willDelete) => {
             if (willDelete) {
                 const  employeeID= id && `/${id}`;
-                const result = await axios.post(`${baseUrl}${deleteUser}${employeeID}`)
+                const result = await axios.delete(`${baseUrl}${deleteUser}${employeeID}`)
                 if(result.data.code==200){
                   getData(page,rowsPerPage,"")
                 }
