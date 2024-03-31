@@ -1,0 +1,62 @@
+/* SignUpForm.css */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+
+    &-container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 380px;
+
+            input[type='text'],
+            input[type='email'],
+            input[type='password'] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+        }
+    .sub-title{
+         margin-top:10px;
+          a{
+         color:blue;
+        }
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:disabled {
+                background-color: red;
+                cursor: not-allowed;
+            }
+        }
+
+        .error {
+            color: red;
+            text-align: start;
+            font-size: 0.7rem;
+        }
+    }
+}
