@@ -12,8 +12,8 @@ const SignInForm = () => {
     const navigate = useNavigate()
     const handleSubmit = async (values,) => {
         const result = await axios.post(`${baseUrl}${signInUser}`, values)
-        if (result.status === "success") {
-            swal(result.data.msg, {
+        if (result.data.code === 200) {
+            swal(result.data.message, {
                 icon: "success",
             });
             navigate('/user-list')

@@ -1,1 +1,0 @@
-export const headColumns=["#","Employee Name","Designation","Email","Phone","Age","Action"]

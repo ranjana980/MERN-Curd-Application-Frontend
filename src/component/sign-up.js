@@ -12,14 +12,14 @@ const SignUpForm = () => {
     const navigate = useNavigate()
     const handleSubmit = async (values) => {
         const result = await axios.post(`${baseUrl}${registerUser}`, values)
-        if (result.status === "success") {
-            swal(result.data.msg, {
+        if (result.data.code === 200) {
+            swal(result.data.message, {
                 icon: "success",
             });
             navigate('/sign-in')
         }
         else {
-            swal(result.data.msg, {
+            swal(result.data.message, {
                 icon: "failure",
             });
         }

@@ -24,22 +24,19 @@ const signUpFormElements = [
     { name: 'confirmPassword', placeholder: 'Confirm your password..', }]
 
 
-    const signInValues = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    };
-    
-    const signInSchema = Yup.object().shape({
-        email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-    });
-    
-    const signInFormElements = [
-        { name: 'email', placeholder: 'Enter your email..', },
-        { name: 'password', placeholder: 'Create a password..', },
-       ]
+const signInValues = {
+    email: '',
+    password: '',
+};
 
-export { signUpValues, signUpSchema, signUpFormElements,signInValues,signInSchema,signInFormElements }
+const signInSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+});
+
+const signInFormElements = [
+    { name: 'email', placeholder: 'Enter your email..', },
+    { name: 'password', placeholder: 'Create a password..', },
+]
+const headColumns = ["#", "User Name", "Designation", "Email", "Phone", "Age", "Action"]
+export { signUpValues, signUpSchema, signUpFormElements, signInValues, signInSchema, signInFormElements, headColumns }
