@@ -16,7 +16,7 @@ const SignUpForm = () => {
             swal(result.data.message, {
                 icon: "success",
             });
-            navigate('/sign-in')
+            navigate('/')
         }
         else {
             swal(result.data.message, {

@@ -10,13 +10,13 @@ import CurdApp from './CurdPage';
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
-    <Routes>
-      <Route index path='/sign-up' element={<SignUpForm/>} />
-      <Route index path='/user-list' element={<CurdApp/>} />
-      <Route  path='/sign-in' element={<SignInForm />} />
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignInForm />} />
+          <Route path='/sign-up' element={<SignUpForm />} />
+          <Route path='/user-list' element={<CurdApp />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
