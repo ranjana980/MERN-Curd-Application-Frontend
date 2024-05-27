@@ -16,7 +16,7 @@ const SignInForm = () => {
             swal(result.data.message, {
                 icon: "success",
             });
-            navigate('/user-list')
+            navigate('/dashboard')
         }
         else {
             swal(result.data.msg, {

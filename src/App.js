@@ -5,7 +5,7 @@ import SignUpForm from './component/sign-up';
 import SignInForm from './component/sign-in'
 import './component/style.scss'
 import { BrowserRouter, Route, Routes, } from 'react-router-dom';
-import CurdApp from './CurdPage';
+import DashBoard from './dashboard';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<SignInForm />} />
           <Route path='/sign-up' element={<SignUpForm />} />
-          <Route path='/user-list' element={<CurdApp />} />
+          <Route path='/dashboard' element={<DashBoard />} />
         </Routes>
       </BrowserRouter>
     </div>
